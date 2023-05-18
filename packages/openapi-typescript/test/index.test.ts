@@ -485,6 +485,17 @@ export type operations = Record<string, never>;
               },
               required: ["petType"],
             },
+            Owner: {
+              type: "object",
+              properties: {
+                favoritePet: {
+                  nullable: true,
+                  allOf: [
+                    { $ref: "#/components/schemas/Pet" },
+                  ],
+                },
+              },
+            }
           },
         },
       };
@@ -512,6 +523,9 @@ export interface components {
       /** @enum {string} */
       petType: "lizard";
     };
+    Owner: {
+      favoritePet?: components["schemas"]["Pet"];
+    }
   };
   responses: never;
   parameters: never;
